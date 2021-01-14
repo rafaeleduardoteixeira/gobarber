@@ -1,11 +1,14 @@
 import React from 'react';
+import SignIn from './pages/SigIn/index';
+import GlobalStyle from './styles/global';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Hello Word</h1>
+      <SignIn />
+      <GlobalStyle />
     </div>
   );
-}
+};
 
 export default App;
