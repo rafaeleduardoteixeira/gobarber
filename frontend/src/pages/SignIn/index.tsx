@@ -8,26 +8,45 @@ import Button from '../../components/button/button';
 import Input from '../../components/input/input';
 import { Background, Container, Content } from './styles';
 import getValidationErros from '../../utils/getValidationErros';
+import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const handleSubmit = useCallback(async (data: any) => {
-    try {
-      formRef.current?.setErrors({});
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('E-mail obrigatório.')
-          .email('Digite um e-mail válido.'),
-        password: Yup.string().required('Senha obrigatória.'),
-      });
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (error) {
-      formRef.current?.setErrors(getValidationErros(error));
-    }
-  }, []);
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('E-mail obrigatório.')
+            .email('Digite um e-mail válido.'),
+          password: Yup.string().required('Senha obrigatória.'),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        signIn({ email: data.email, password: data.password });
+      } catch (error) {
+        if (error instanceof Yup.ValidationError) {
+          formRef.current?.setErrors(getValidationErros(error));
+        }
+
+        addToast();
+      }
+    },
+    [signIn, addToast]
+  );
 
   return (
     <Container>

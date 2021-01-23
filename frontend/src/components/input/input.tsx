@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...props }) => {
     } else {
       setIsFilled(false);
     }
-  }, []);
+  }, [clearError]);
 
   useEffect(() => {
     registerField({
