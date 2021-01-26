@@ -2,11 +2,12 @@ import { Form } from '@unform/web';
 import React, { useCallback, useRef } from 'react';
 import { FiArrowLeft, FiLock, FiMail, FiUser } from 'react-icons/fi';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 import { FormHandles } from '@unform/core';
 import logo from '../../assets/logo.svg';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
-import { Background, Container, Content } from './styles';
+import { Background, Container, AnimationContainer, Content } from './styles';
 import getValidationErros from '../../utils/getValidationErros';
 
 const SignUp: React.FC = () => {
@@ -35,23 +36,25 @@ const SignUp: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logo} alt="Go Barber" />
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Faça seu cadastro</h1>
-          <Input icon={FiUser} name="name" placeholder="Nome" />
-          <Input icon={FiMail} name="email" placeholder="E-mail" />
-          <Input
-            icon={FiLock}
-            name="password"
-            placeholder="Senha"
-            type="password"
-          />
-          <Button type="submit">Cadastrar</Button>
-        </Form>
-        <a href="forgot">
-          <FiArrowLeft />
-          Voltar para logon
-        </a>
+        <AnimationContainer>
+          <img src={logo} alt="Go Barber" />
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
+            <Input icon={FiUser} name="name" placeholder="Nome" />
+            <Input icon={FiMail} name="email" placeholder="E-mail" />
+            <Input
+              icon={FiLock}
+              name="password"
+              placeholder="Senha"
+              type="password"
+            />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
+          <Link to="/">
+            <FiArrowLeft />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
