@@ -26,6 +26,8 @@
     "multer": "^1.4.2",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^3.9.0",
+    "tsyringe": "^4.4.0",
     "typeorm": "^0.2.28",
     "uuidv4": "^6.2.4"
   }

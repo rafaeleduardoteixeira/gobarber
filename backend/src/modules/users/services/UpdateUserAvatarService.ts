@@ -1,19 +1,23 @@
-import { getRepository } from "typeorm";
-import User from "../infra/typeorm/entities/User";
 import path from "path";
-import uploadConfig from "../../../config/upload";
 import fs from "fs";
-import AppError from '../../../shared/errors/AppError'
+import { injectable, inject } from 'tsyringe'
+import uploadConfig from "@config/upload";
+import AppError from '@shared/errors/AppError'
+import User from "@modules/users/infra/typeorm/entities/User";
+import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
-interface Request {
-  user_id: string;
+interface IRequest {
+  id: number;
   filename: string;
 }
 
+@injectable()
 class UpdateUserAvatarService {
-  public async execute({ user_id, filename }: Request): Promise<User> {
-    const usersRepository = getRepository(User);
-    const user = await usersRepository.findOne(user_id);
+  constructor(@inject('UserRepository') private usersRepository: IUsersRepository) {
+  }
+
+  public async execute({ id, filename }: IRequest): Promise<User> {
+    const user = await this.usersRepository.findById(id);
 
     if (!user) {
       throw new AppError("User not authenticated.", 401);
@@ -28,7 +32,7 @@ class UpdateUserAvatarService {
     }
 
     user.avatar = filename;
-    await usersRepository.save(user);
+    await this.usersRepository.save(user);
 
     return user;
   }
