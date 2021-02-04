@@ -9,5 +9,7 @@ import UserRepository from "@modules/users/infra/typeorm/repositories/UsersRepos
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
 
+
+
 container.registerSingleton<IAppointmentsRepository>('AppointmentsRepository', AppointmentsRepository)
 container.registerSingleton<IUsersRepository>('UserRepository', UserRepository)
