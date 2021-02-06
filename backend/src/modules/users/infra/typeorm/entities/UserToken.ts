@@ -5,7 +5,6 @@ class UserToken {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  @Generated('uuid')
   token: string;
   @Column()
   user_id: number;
