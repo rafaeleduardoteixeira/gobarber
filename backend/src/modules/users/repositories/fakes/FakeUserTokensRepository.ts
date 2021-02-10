@@ -1,6 +1,6 @@
 import UserToken from "@modules/users/infra/typeorm/entities/UserToken";
 import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository'
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 
 class FakeUserTokensRepository implements IUserTokensRepository {
   private users: UserToken[] = [];
@@ -16,7 +16,7 @@ class FakeUserTokensRepository implements IUserTokensRepository {
       }
     }
 
-    userToken.token = uuid()
+    userToken.token = v4()
     userToken.user_id = user_id
     userToken.created_at = new Date()
 
