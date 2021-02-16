@@ -7,7 +7,7 @@ class User {
   @Column()
   name: string;
   @Column()
-  password: string;
+  password?: string;
   @Column()
   email: string;
   @CreateDateColumn()

@@ -52,4 +52,8 @@ describe('UpdateProfile', () => {
     expect(updateProfileService.execute({ user_id: user.id, name: 'Rafael Eduardo Teixeira', email: 'rafaeleduardoteixeira@gmail.com', oldPassword: 'admin123', password: '123' })).rejects.toBeInstanceOf(AppError);
 
   })
+
+  it('Should be able show profile from non-existing user', async () => {
+    await expect(updateProfileService.execute({ user_id: 1, name: 'Rafael Eduardo Teixeira', email: 'rafaeleduardoteixeira@gmail.com', oldPassword: 'admin123', password: '123' })).rejects.toBeInstanceOf(AppError);
+  })
 })

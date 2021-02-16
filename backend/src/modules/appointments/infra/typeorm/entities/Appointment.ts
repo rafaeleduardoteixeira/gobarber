@@ -6,7 +6,7 @@ class Appointment {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  provider_id: string;
+  provider_id: number;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "provider_id" })

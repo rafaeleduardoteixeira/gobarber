@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for appointments/services/CreateAppointmentService.ts</title>
+    <title>Code coverage report for users/services/ShowProfileService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">appointments/services</a> CreateAppointmentService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> ShowProfileService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -84,17 +84,8 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,7 +100,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -118,47 +108,36 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { startOfHour } from "date-fns";</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { injectable, inject } from 'tsyringe'</span>
 <span class="cstat-no" title="statement not covered" >import AppError from '@shared/errors/AppError'</span>
-<span class="cstat-no" title="statement not covered" >import { injectable, inject } from 'tsyringe'</span>
-import Appointment from "@modules/appointments/infra/typeorm/entities/Appointment";
-import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository'
+import User from "@modules/users/infra/typeorm/entities/User";
+import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 &nbsp;
 interface IRequest {
-  provider_id: string;
-  date: Date;
+  user_id: number;
 }
 &nbsp;
 @injectable()
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class <span class="cstat-no" title="statement not covered" >C</span></span>reateAppointmentService {</span>
-<span class="fstat-no" title="function not covered" >  constructor(@i</span>nject('AppointmentsRepository') private <span class="cstat-no" title="statement not covered" >appointmentsRepository: IAppointmentsRepository)</span> {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class <span class="cstat-no" title="statement not covered" >S</span></span>howProfileService {</span>
+<span class="fstat-no" title="function not covered" >  constructor(@i</span>nject('UserRepository') private <span class="cstat-no" title="statement not covered" >usersRepository: IUsersRepository)</span> {
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  public async <span class="cstat-no" title="statement not covered" >e</span>xecute({ date<span class="cstat-no" title="statement not covered" >, p</span>rovider_id<span class="cstat-no" title="statement not covered" > }: IRequest)</span>: Promise&lt;Appointment&gt; {</span>
-    const <span class="cstat-no" title="statement not covered" >appointmentDate = startOfHour(date);</span>
-    const <span class="cstat-no" title="statement not covered" >findAppointmentInSameDate = <span class="cstat-no" title="statement not covered" >await this.appointmentsRepository.findByDate(appointmentDate);</span></span>
+<span class="fstat-no" title="function not covered" >  public async <span class="cstat-no" title="statement not covered" >e</span>xecute({ user_id<span class="cstat-no" title="statement not covered" > }: IRequest)</span>: Promise&lt;User&gt; {</span>
+    const <span class="cstat-no" title="statement not covered" >user = <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >await this.usersRepository.findById(user_id);</span></span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (findAppointmentInSameDate) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError("This appointment is aready booked.");</span>
+<span class="cstat-no" title="statement not covered" >    if (!user) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new AppError('User not found')</span>
     }
 &nbsp;
-    const <span class="cstat-no" title="statement not covered" >appointment = <span class="cstat-no" title="statement not covered" >await this.appointmentsRepository.create({</span></span>
-      provider_id,
-      date: appointmentDate,
-    });
+<span class="cstat-no" title="statement not covered" >    return user;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return appointment;</span>
   }
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default CreateAppointmentService;</span>
+<span class="cstat-no" title="statement not covered" >export default ShowProfileService;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
