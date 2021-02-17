@@ -26,10 +26,10 @@ describe('ListProviderMonthAvailability', () => {
     const availability = await listProviderMonthAvailabilityService.execute({
       year: 2020,
       month: 5,
-      provider_id: 1
+      provider_id: 2
     })
 
-    expect(availability).toEqual(expect.arrayContaining([
+    await expect(availability).toEqual(expect.arrayContaining([
       { day: 20, available: false },
       { day: 21, available: true },
     ]))
