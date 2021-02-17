@@ -27,8 +27,6 @@ class ListProviderDayAvailabilityService {
       day
     });
 
-    console.log(appointments)
-
     const hourStart = 8;
     const eachHourArray = Array.from({ length: 10 }, (_, index) => index + hourStart)
     const availability = eachHourArray.map(hour => {
