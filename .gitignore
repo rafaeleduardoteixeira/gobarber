@@ -3,7 +3,8 @@
 ################################################################################
 
 # dependencies
-/backend/node_modules
-/frontend/node_modules
+*/node_modules
+*/yarn.lock
 *.log
 package-lock.json
+*/coverage
