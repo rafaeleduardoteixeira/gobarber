@@ -5,12 +5,18 @@ import User from "@modules/users/infra/typeorm/entities/User";
 class Appointment {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   provider_id: number;
-
   @ManyToOne(() => User)
   @JoinColumn({ name: "provider_id" })
   provider: User;
+
+  @Column()
+  user_id: number;
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id" })
+  user: User;
 
   @Column("datetime")
   date: Date;
