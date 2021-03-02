@@ -8,3 +8,5 @@
 *.log
 package-lock.json
 */coverage
+.env
+*/ormconfig.json

@@ -15,8 +15,7 @@
     ],
     "cli": {
       "migrationsDir": "./src/shared/infra/typeorm/migrations"
-    },
-    "logging": true
+    }
   },
   {
     "name": "mongodb",
@@ -28,7 +27,6 @@
     "useUnifiedTopology": true,
     "entities": [
       "./src/modules/**/infra/typeorm/schemas/*.ts"
-    ],
-    "logging": true
+    ]
   }
 ]
