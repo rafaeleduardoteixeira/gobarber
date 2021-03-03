@@ -30,6 +30,8 @@ export default class DiskStorageProvider implements IStorageProvider {
       ContentType,
     }).promise();
 
+    await fs.promises.unlink(tmpDirectory);
+
     return file;
 
   }
