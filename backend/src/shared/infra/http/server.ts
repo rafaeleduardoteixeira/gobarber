@@ -14,7 +14,7 @@ import { errors } from 'celebrate'
 const app = express();
 app.use(cors())
 app.use(express.json());
-app.use('/files', express.static(uploadConfig.directory));
+app.use('/files', express.static(uploadConfig.directoryUploads));
 app.use(routes);
 app.use(errors());
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {

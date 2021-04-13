@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@types/mime-types": "^2.1.0",
-    "mime": "^2.5.2",
-    "mime-types": "^2.1.29",
-    "rate-limiter-flexible": "^2.2.1"
-  }
-}

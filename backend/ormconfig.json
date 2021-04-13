@@ -15,7 +15,8 @@
     ],
     "cli": {
       "migrationsDir": "./src/shared/infra/typeorm/migrations"
-    }
+    },
+    "logging": true
   },
   {
     "name": "mongodb",

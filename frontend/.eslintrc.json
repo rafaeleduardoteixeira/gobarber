@@ -40,6 +40,7 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "import/prefer-default-export": "off",
+        "import/no-duplicate-imports": "off",
         "import/extensions": [
             "error",
             "ignorePackages",

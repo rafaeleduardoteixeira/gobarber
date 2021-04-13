@@ -14,6 +14,10 @@ export const ButtonStyle = styled.button`
   margin-top: 3vh;
   transition: background-color 300ms;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &:hover {
     background: ${shade(0.2, '#ff9000')};
   }

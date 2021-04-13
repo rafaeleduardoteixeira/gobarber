@@ -12,6 +12,7 @@ export default class DiskStorageProvider implements IStorageProvider {
             path.resolve(tmpDirectory, file),
             path.resolve(uploadDirectory, file),
         )
+
         return file;
 
     }
