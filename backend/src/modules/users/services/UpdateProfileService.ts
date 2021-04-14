@@ -8,7 +8,7 @@ interface IRequest {
   user_id: number;
   name: string;
   email: string;
-  oldPassword?: string;
+  old_password?: string;
   password?: string;
 }
 
@@ -17,7 +17,7 @@ class UpdateProfileService {
   constructor(@inject('UserRepository') private usersRepository: IUsersRepository, @inject('HashProvider') private hashProvider: IHashProvider) {
   }
 
-  public async execute({ user_id, name, email, oldPassword, password }: IRequest): Promise<User | undefined> {
+  public async execute({ user_id, name, email, old_password, password }: IRequest): Promise<User | undefined> {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
@@ -32,12 +32,12 @@ class UpdateProfileService {
     user.name = name;
     user.email = email;
 
-    if (password && !oldPassword) {
+    if (password && !old_password) {
       throw new AppError('Need inform old password to update password')
     }
 
-    if (password && oldPassword) {
-      const checkOldPassword = await this.hashProvider.compareHash(oldPassword, user.password)
+    if (password && old_password) {
+      const checkOldPassword = await this.hashProvider.compareHash(old_password, user.password)
       if (!checkOldPassword) {
         throw new AppError('Incorrect old password')
       }
